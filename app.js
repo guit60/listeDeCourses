@@ -26,16 +26,12 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
     //res.status(200).send('hello');
-    res.status(200).render("accueil");
+    res.status(300).render("accueil");
 });
-// app.get('/', (req, res) => {
-//     let item = url.parse(req.url).query;
-//     res.send(item);
-// })
-app.post('/notes', (req, res, next) => {
+app.post('/notes', (req, res) => {
     let course = req.body.course;
     console.log(course);
-    next();
+    res.status(300).redirect("/");
 })
 app.use((req, res) => {
     res.status(404).render('page_introuvable');
